@@ -6,6 +6,7 @@ class AuthHelper {
   AuthHelper._();
   static AuthHelper authHelper = AuthHelper._();
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+
   Future<String> createNewAccount(String email, String password) async {
     try {
       String enterdEmail = email;

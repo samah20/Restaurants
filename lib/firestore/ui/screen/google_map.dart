@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class GoogleNewTest extends StatefulWidget {
   @override
@@ -22,11 +23,23 @@ class _GoogleNewTestState extends State<GoogleNewTest> {
     Position position = await Geolocator.getCurrentPosition();
     controller.animateCamera(CameraUpdate.newLatLngZoom(
         LatLng(position.latitude, position.longitude), 5));
+
+    // LocationPermission permission;
+    permission = await Geolocator.requestPermission();
+    //Position position = await Geolocator.getCurrentPosition();
+    this.myLocation = LatLng(position.latitude, position.longitude);
+    controller.animateCamera(CameraUpdate.newLatLngZoom(
+        LatLng(position.latitude, position.longitude), 20));
   }
 
   openMapsApp() async {
     String googleUrl =
         'https://www.google.com/maps/search/?api=1&query=31.532826649261157,34.45488754659891';
+    if (await canLaunch(googleUrl)) {
+      await launch(googleUrl);
+    } else {
+      throw 'Could not open the map.';
+    }
     // if (await canLaunch(googleUrl)) {
     //   await launch(googleUrl);
     // } else {

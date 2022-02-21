@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:restaurants/firestore/data/router_helper.dart';
 import 'package:restaurants/firestore/models/gd_user.dart';
 import 'package:restaurants/firestore/providers/app_provider.dart';
-import 'package:restaurants/firestore/ui/screen/widgets/custom_button.dart';
+import 'package:restaurants/firestore/ui/widgets/custom_button.dart';
 
 import 'login_screen.dart';
 
